@@ -1,0 +1,27 @@
+@startuml
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 50
+
+rectangle "Moduł zasilania" as Power
+rectangle "Moduł podawania drutu" as Feeder
+rectangle "Moduł interfejsu użytkownika" as UI
+rectangle "Moduł sterujący" as CM
+rectangle "Moduł trawienia ostrzy" as Etcher
+
+Power -[hidden]right- Feeder
+
+Power -left-> UI
+
+Power -down-> CM
+
+Power -right-> Feeder
+
+UI -[hidden]right- CM
+
+UI <-down-> CM
+CM -right-> Feeder
+Feeder -down-> Etcher
+CM -down-> Etcher
+
+@enduml
